@@ -106,6 +106,15 @@ export default ({ mode }: { mode: string }) => {
     },
     server: {
       allowedHosts: true,
+      proxy: {
+        // Proxy /ollama/* to local Ollama server to avoid CORS in dev
+        '/ollama': {
+          target: 'http://127.0.0.1:11434',
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path: string) => path.replace(/^\/ollama/, ''),
+        },
+      },
     },
     resolve: {
       alias: {

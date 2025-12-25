@@ -13,24 +13,28 @@ interface ComponentRendererProps {
   children?: React.ReactNode;
 }
 export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, props, children }) => {
-  const { className, ...rest } = props;
+  const { className, fontSize, ...rest } = props;
   const hasChildren = React.Children.count(children) > 0;
+  
+  // Create style object with fontSize if present
+  const textStyle = fontSize ? { fontSize: `${fontSize}px` } : undefined;
+  
   switch (type) {
     case 'container':
       return (
-        <div className={cn('flex w-full transition-all', className)} {...rest}>
+        <div className={cn('flex w-full h-full transition-all', className)} {...rest}>
           {children}
         </div>
       );
     case 'button':
       return (
-        <Button className={cn(className)} {...rest}>
+        <Button className={cn('w-full h-full', className)} style={textStyle} {...rest}>
           {props.children || 'Button'}
         </Button>
       );
     case 'card':
       return (
-        <Card className={cn(className)} {...rest}>
+        <Card className={cn('h-full', className)} style={textStyle} {...rest}>
           <CardHeader>
             {props.title && <CardTitle>{props.title}</CardTitle>}
             {props.description && <CardDescription>{props.description}</CardDescription>}
@@ -48,22 +52,26 @@ export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, prop
     case 'header': {
       const Level = (props.level || 'h2') as keyof JSX.IntrinsicElements;
       return (
-        <Level className={cn('scroll-m-20 tracking-tight', className)} {...rest}>
+        <Level 
+          className={cn('scroll-m-20 tracking-tight w-full h-full flex items-center', className)} 
+          style={textStyle}
+          {...rest}
+        >
           {props.children || 'Header'}
         </Level>
       );
     }
     case 'text':
       return (
-        <p className={cn('leading-7', className)} {...rest}>
+        <p className={cn('leading-7 w-full h-full', className)} style={textStyle} {...rest}>
           {props.children || 'Text content'}
         </p>
       );
     case 'input':
       return (
-        <div className={cn('grid w-full max-w-sm items-center gap-1.5', className)}>
-          {props.label && <Label htmlFor={rest.id}>{props.label}</Label>}
-          <Input type={props.type || 'text'} placeholder={props.placeholder} {...rest} />
+        <div className={cn('grid w-full items-center gap-1.5', className)}>
+          {props.label && <Label htmlFor={rest.id} style={textStyle}>{props.label}</Label>}
+          <Input type={props.type || 'text'} placeholder={props.placeholder} style={textStyle} {...rest} />
         </div>
       );
     default:
