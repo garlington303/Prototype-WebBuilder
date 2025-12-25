@@ -38,34 +38,33 @@ const findNode = (nodes: Component[], id: string): { node: Component; parentArra
 const getDefaultProps = (type: ComponentType): Record<string, any> => {
   switch (type) {
     case 'container':
-      return {
-        // Added flex flex-col to match default layout
-        className: 'p-4 border border-dashed border-border min-h-[100px] rounded-lg bg-background/50 flex flex-col',
-        layout: 'flex-col'
+      return { 
+        className: 'p-4 border border-dashed border-border min-h-[100px] rounded-lg bg-background/50',
+        layout: 'flex-col' 
       };
     case 'button':
-      return {
-        children: 'Click Me',
-        variant: 'default',
+      return { 
+        children: 'Click Me', 
+        variant: 'default', 
         size: 'default',
         className: ''
       };
     case 'card':
-      return {
-        title: 'Card Title',
+      return { 
+        title: 'Card Title', 
         description: 'Card description goes here.',
         content: 'Card content area.',
         footer: 'Footer action',
         className: 'w-full'
       };
     case 'header':
-      return {
-        children: 'Heading Text',
+      return { 
+        children: 'Heading Text', 
         level: 'h2',
         className: 'text-2xl font-bold'
       };
     case 'text':
-      return {
+      return { 
         children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         className: 'text-muted-foreground'
       };
