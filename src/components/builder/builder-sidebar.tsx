@@ -3,7 +3,7 @@ import { useDraggable } from '@dnd-kit/core';
 import { Box, MousePointerClick, LayoutTemplate, Heading, Type, FormInput, GripVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ComponentType } from '@/store/builder-store';
-import { COMPONENT_LABELS } from './component-registry';
+import { COMPONENT_LABELS } from './component-constants';
 const DraggableItem = ({ type, label, icon: Icon }: { type: ComponentType; label: string; icon: any }) => {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `sidebar-${type}`,

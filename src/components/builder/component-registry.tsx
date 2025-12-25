@@ -14,6 +14,7 @@ interface ComponentRendererProps {
 }
 export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, props, children }) => {
   const { className, ...rest } = props;
+  const hasChildren = React.Children.count(children) > 0;
   switch (type) {
     case 'container':
       return (
@@ -35,7 +36,7 @@ export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, prop
             {props.description && <CardDescription>{props.description}</CardDescription>}
           </CardHeader>
           <CardContent>
-            {props.content || children}
+            {hasChildren ? children : (props.content || 'Card content area')}
           </CardContent>
           {props.footer && (
             <CardFooter>
@@ -44,13 +45,14 @@ export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, prop
           )}
         </Card>
       );
-    case 'header':
+    case 'header': {
       const Level = (props.level || 'h2') as keyof JSX.IntrinsicElements;
       return (
         <Level className={cn('scroll-m-20 tracking-tight', className)} {...rest}>
           {props.children || 'Header'}
         </Level>
       );
+    }
     case 'text':
       return (
         <p className={cn('leading-7', className)} {...rest}>
@@ -67,20 +69,4 @@ export const ComponentRegistry: React.FC<ComponentRendererProps> = ({ type, prop
     default:
       return <div className="p-2 text-red-500">Unknown component: {type}</div>;
   }
-};
-export const COMPONENT_ICONS: Record<ComponentType, string> = {
-  container: 'Box',
-  button: 'MousePointerClick',
-  card: 'LayoutTemplate',
-  header: 'Heading',
-  text: 'Type',
-  input: 'FormInput',
-};
-export const COMPONENT_LABELS: Record<ComponentType, string> = {
-  container: 'Container',
-  button: 'Button',
-  card: 'Card',
-  header: 'Heading',
-  text: 'Text Block',
-  input: 'Input Field',
 };

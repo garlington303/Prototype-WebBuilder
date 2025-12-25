@@ -6,7 +6,7 @@ import { CanvasRenderer } from '@/components/builder/canvas-renderer';
 import { BuilderHeader } from '@/components/builder/builder-header';
 import { useBuilderStore, ComponentType } from '@/store/builder-store';
 import { Toaster } from '@/components/ui/sonner';
-import { COMPONENT_ICONS, COMPONENT_LABELS } from '@/components/builder/component-registry';
+import { COMPONENT_ICONS, COMPONENT_LABELS } from '@/components/builder/component-constants';
 import { Box, MousePointerClick, LayoutTemplate, Heading, Type, FormInput } from 'lucide-react';
 // Map icons for overlay
 const Icons: Record<string, any> = {
@@ -54,8 +54,8 @@ export function HomePage() {
   return (
     <div className="h-screen w-screen flex flex-col bg-background overflow-hidden">
       <BuilderHeader />
-      <DndContext 
-        sensors={sensors} 
+      <DndContext
+        sensors={sensors}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
