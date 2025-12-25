@@ -80,7 +80,9 @@ function runSetupCommands() {
     const commands = [
     "bun add @dnd-kit/utilities@^3.2.2",
     "bun add nanoid@^5.0.7",
-    "bun add react-markdown@^9.0.1"
+    "bun add react-markdown@^9.0.1",
+    "bun add @radix-ui/react-dialog",
+    "bun add @radix-ui/react-switch"
 ];
     
     if (commands.length === 0) {
