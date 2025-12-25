@@ -77,7 +77,11 @@ function updateWranglerJsonc() {
 }
 
 function runSetupCommands() {
-    const commands = [];
+    const commands = [
+    "bun add @dnd-kit/utilities@^3.2.2",
+    "bun add nanoid@^5.0.7",
+    "bun add react-markdown@^9.0.1"
+];
     
     if (commands.length === 0) {
         console.log('⊘ No setup commands to run');
