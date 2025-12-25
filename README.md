@@ -1,6 +1,6 @@
 # Aetheria Builder
 
-[aureliabutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/garlington303/Prototype-WebBuilder)
 
 Aetheria Builder is a state-of-the-art, browser-based visual interface builder and AI-assisted frontend development tool. It empowers users to construct sophisticated user interfaces through a seamless drag-and-drop experience, real-time property editing, and AI-driven component generation.
 
@@ -92,7 +92,7 @@ This will start the Vite development server, typically available at `http://loca
 
 This project is configured for deployment on Cloudflare Workers.
 
-[aureliabutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/garlington303/Prototype-WebBuilder)
 
 ### Manual Deployment
 
