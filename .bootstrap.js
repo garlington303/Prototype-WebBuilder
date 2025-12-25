@@ -82,7 +82,8 @@ function runSetupCommands() {
     "bun add nanoid@^5.0.7",
     "bun add react-markdown@^9.0.1",
     "bun add @radix-ui/react-dialog",
-    "bun add @radix-ui/react-switch"
+    "bun add @radix-ui/react-switch",
+    "bun add @dnd-kit/core @dnd-kit/utilities nanoid zustand react-markdown lucide-react clsx tailwind-merge"
 ];
     
     if (commands.length === 0) {
