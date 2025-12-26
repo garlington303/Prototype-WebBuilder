@@ -46,8 +46,18 @@ const DEFAULT_OLLAMA_SETTINGS: OllamaSettings = {
   model: 'llama3',
 };
 
+// Available Gemini models
+export const GEMINI_MODELS: Array<{ id: string; name: string; description: string; badge?: string }> = [
+  { id: 'gemini-3-pro-preview', name: 'Gemini 3 Pro', description: 'Best for deep logic and complex tasks', badge: 'NEW' },
+  { id: 'gemini-3-flash-preview', name: 'Gemini 3 Flash', description: 'Fast, iterative UI changes', badge: 'NEW' },
+  { id: 'gemini-2.0-flash', name: 'Gemini 2.0 Flash', description: 'Fast and efficient' },
+  { id: 'gemini-2.0-flash-thinking-exp-1219', name: 'Gemini 2.0 Thinking', description: 'Enhanced reasoning' },
+  { id: 'gemini-1.5-pro', name: 'Gemini 1.5 Pro', description: 'Most capable 1.5 model' },
+  { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash', description: 'Lightweight and fast' },
+];
+
 const DEFAULT_GEMINI_SETTINGS: GeminiSettings = {
-  model: 'gemini-2.0-flash',
+  model: 'gemini-3-pro-preview',  // Default to Gemini 3 Pro
 };
 
 // Default System Prompt

@@ -24,7 +24,7 @@ import {
   getSystemPrompt, setSystemPrompt, resetSystemPrompt, DEFAULT_SYSTEM_PROMPT,
   AIProvider, fetchOllamaModels, OllamaModel,
   getGeminiApiKey, saveGeminiApiKey, removeGeminiApiKey, isEnvGeminiApiKey,
-  getGeminiSettings, setGeminiSettings,
+  getGeminiSettings, setGeminiSettings, GEMINI_MODELS,
   isEnhancedPromptMode, setEnhancedPromptMode, getAvailablePresets
 } from '@/lib/ai-service';
 import { Key, Check, Trash2, ExternalLink, Lock, Bot, FileCode, RefreshCw, Sparkles, Zap } from 'lucide-react';
@@ -314,15 +314,25 @@ export function AISettingsModal({ open, onOpenChange }: AISettingsModalProps) {
                   <SelectValue placeholder="Select Model" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="gemini-2.0-flash">Gemini 2.0 Flash (Fast)</SelectItem>
-                  <SelectItem value="gemini-2.0-flash-lite">Gemini 2.0 Flash Lite</SelectItem>
-                  <SelectItem value="gemini-1.5-pro">Gemini 1.5 Pro</SelectItem>
-                  <SelectItem value="gemini-1.5-flash">Gemini 1.5 Flash</SelectItem>
+                  {GEMINI_MODELS.map((model) => (
+                    <SelectItem key={model.id} value={model.id}>
+                      <div className="flex items-center gap-2">
+                        <span>{model.name}</span>
+                        {model.badge && (
+                          <span className="px-1.5 py-0.5 text-[10px] font-bold bg-purple-500 text-white rounded">
+                            {model.badge}
+                          </span>
+                        )}
+                      </div>
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
-              <p className="text-xs text-muted-foreground">
-                All Gemini models support vision/image inputs.
-              </p>
+              {GEMINI_MODELS.find(m => m.id === geminiModel) && (
+                <p className="text-xs text-muted-foreground">
+                  {GEMINI_MODELS.find(m => m.id === geminiModel)?.description}
+                </p>
+              )}
             </div>
 
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
